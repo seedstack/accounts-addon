@@ -1,3 +1,12 @@
+/**
+ * Copyright (c) 2013-2015 by The SeedStack authors. All rights reserved.
+ *
+ * This file is part of SeedStack, An enterprise-oriented full development stack.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
 /*
  * Creation : 27 févr. 2015
  */
@@ -67,11 +76,13 @@ public class DBSecurityIT {
         connectUser(ID, PASSWORD);
         assertThat(securitySupport.isAuthenticated()).isTrue();
         assertThat(securitySupport.hasRole("jedi")).isTrue();
+        securitySupport.logout();
     }
 
     @Test(expected = AuthenticationException.class)
     public void wrongPassword() {
         connectUser(ID, "S0mePa55");
+        securitySupport.logout();
     }
 
     private void connectUser(String id, String password) {
