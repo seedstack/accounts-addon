@@ -14,7 +14,7 @@
     <parent>
         <groupId>org.seedstack.functions.account-management</groupId>
         <artifactId>account-management-function</artifactId>
-        <version>2.0.0-M1-SNAPSHOT</version>
+        <version>1.0.0-M1-SNAPSHOT</version>
     </parent>
 
     <artifactId>account-management-function-core</artifactId>
