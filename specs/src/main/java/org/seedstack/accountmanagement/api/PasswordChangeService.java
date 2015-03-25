@@ -14,9 +14,18 @@ package org.seedstack.accountmanagement.api;
 
 import org.seedstack.business.api.application.annotations.ApplicationService;
 
+/**
+ * Service that allows the connected user to change his current password.
+ */
 @ApplicationService
 public interface PasswordChangeService {
 
+	/**
+	 * Changes the password of the connected user
+	 * @param oldPassword the old password. Must be correct !
+	 * @param newPassword the new password
+	 * @throws IncorrectPasswordException if the old password is incorrect
+	 */
     void changePassword(String oldPassword, String newPassword) throws IncorrectPasswordException;
 
 }

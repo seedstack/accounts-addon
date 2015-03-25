@@ -12,22 +12,37 @@
  */
 package org.seedstack.accountmanagement.api;
 
+/**
+ * Exception thrown if the password given is incorrect.
+ */
 public class IncorrectPasswordException extends Exception {
 
     private static final long serialVersionUID = -2651046105421381539L;
 
+    /**
+     * Constructor
+     */
     public IncorrectPasswordException() {
         super();
     }
 
+    /**
+     * Constructor
+     */
     public IncorrectPasswordException(String message, Throwable cause) {
         super(message, cause);
     }
 
+    /**
+     * Constructor
+     */
     public IncorrectPasswordException(String message) {
         super(message);
     }
 
+    /**
+     * Constructor
+     */
     public IncorrectPasswordException(Throwable cause) {
         super(cause);
     }

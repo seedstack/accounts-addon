@@ -16,6 +16,9 @@ import org.seedstack.accountmanagement.internal.domain.account.Account;
 import org.seedstack.accountmanagement.internal.domain.account.AccountRepository;
 import org.seedstack.business.jpa.infrastructure.repository.BaseJpaRepository;
 
+/**
+ * Jpa implementation of AccountRepository
+ */
 public class AccountJpaRepository extends BaseJpaRepository<Account, String> implements AccountRepository {
 
 }

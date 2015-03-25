@@ -22,18 +22,22 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.seedstack.business.api.domain.base.BaseAggregateRoot;
 import org.seedstack.business.jpa.domain.BaseJpaAggregateRoot;
 
+/**
+ * An account is merely an id, a hashed password and the salt used to hash the password.
+ */
 @Entity
 @Table(name = "SEED_ACCOUNTS")
-public class Account extends BaseJpaAggregateRoot<String> implements Serializable {
+public class Account extends BaseAggregateRoot<String> implements Serializable {
 
     private static final long serialVersionUID = 4203266703741337332L;
 
     @Id
     private String accountId;
 
-    private String password;
+    private String hashedPassword;
 
     private String salt;
 
@@ -53,22 +57,42 @@ public class Account extends BaseJpaAggregateRoot<String> implements Serializabl
         return accountId;
     }
 
-    public String getPassword() {
-        return password;
+    /**
+     * Returns the hashed password
+     * @return a String being the hashed password
+     */
+    public String getHashedPassword() {
+        return hashedPassword;
     }
 
+    /**
+     * Returns the salt used to hash the password
+     * @return A String being the salt
+     */
     public String getSalt() {
         return salt;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    /**
+     * Sets the hashed password
+     * @param hashedPassword a String being the hashed password
+     */
+    public void setHashedPassword(String hashedPassword) {
+        this.hashedPassword = hashedPassword;
     }
 
+    /**
+     * Sets the salt
+     * @param salt a String being the salt
+     */
     public void setSalt(String salt) {
         this.salt = salt;
     }
 
+    /**
+     * Returns the roles of this account
+     * @return a Set of String, each String being a role. Empty list if none.
+     */
     public Set<Role> getRoles() {
         return roles;
     }

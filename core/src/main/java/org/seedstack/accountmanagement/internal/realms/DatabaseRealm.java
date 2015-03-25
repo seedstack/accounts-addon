@@ -38,6 +38,10 @@ import org.seedstack.seed.security.api.exceptions.UnsupportedTokenException;
 import org.seedstack.seed.security.api.principals.PrincipalProvider;
 import org.seedstack.seed.transaction.api.Transactional;
 
+/**
+ * A Realm to authentify user upon the Accounts persisted by the repository
+ *
+ */
 public class DatabaseRealm implements Realm {
 
     private RoleMapping roleMapping;
@@ -74,7 +78,7 @@ public class DatabaseRealm implements Realm {
         if (account == null) {
             throw new UnknownAccountException("Account with id [" + token.getUsername() + "] does not exist");
         }
-        Hash correctHash = new Hash(account.getPassword(), account.getSalt());
+        Hash correctHash = new Hash(account.getHashedPassword(), account.getSalt());
         if (!hashingSupport.validatePassword(token.getPassword(), correctHash)) {
             throw new IncorrectCredentialsException();
         }

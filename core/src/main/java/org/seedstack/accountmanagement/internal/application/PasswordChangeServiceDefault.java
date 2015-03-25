@@ -24,6 +24,9 @@ import org.seedstack.seed.persistence.jpa.api.JpaUnit;
 import org.seedstack.seed.security.api.SecuritySupport;
 import org.seedstack.seed.transaction.api.Transactional;
 
+/**
+ * Default implementation
+ */
 public class PasswordChangeServiceDefault implements PasswordChangeService {
 
     @Inject
@@ -47,11 +50,11 @@ public class PasswordChangeServiceDefault implements PasswordChangeService {
         if (account == null) {
             throw new IllegalStateException("User not connected with his database id");
         }
-        if (!hashingSupport.validatePassword(currentPassword, new Hash(account.getPassword(), account.getSalt()))) {
+        if (!hashingSupport.validatePassword(currentPassword, new Hash(account.getHashedPassword(), account.getSalt()))) {
             throw new IncorrectPasswordException();
         }
         Hash newHash = hashingSupport.createHash(newPassword);
-        account.setPassword(newHash.getHashAsString());
+        account.setHashedPassword(newHash.getHashAsString());
         account.setSalt(newHash.getSaltAsString());
         accountRepository.save(account);
     }

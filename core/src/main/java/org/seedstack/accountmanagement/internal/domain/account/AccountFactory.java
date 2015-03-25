@@ -14,11 +14,32 @@ package org.seedstack.accountmanagement.internal.domain.account;
 
 import org.seedstack.business.api.domain.GenericFactory;
 
+/**
+ * Factory used to create a new {@link Account}
+ */
 public interface AccountFactory extends GenericFactory<Account> {
 
+	/**
+	 * Creates a new {@link Account} with its id
+	 * @param accountId the id
+	 * @return a new {@link Account}
+	 */
     Account createAccount(String accountId);
 
-    Account createAccount(String accountId, String password, String salt);
+    /**
+     * Creates a new {@link Account} with id, hashed password and salt
+     * @param accountId id
+     * @param hashedPassword the hashed password
+     * @param salt the salt used to hash the password
+     * @return the new {@link Account}
+     */
+    Account createAccount(String accountId, String hashedPassword, String salt);
 
+    /**
+     * Creates a new {@link Role}
+     * @param name name of the role
+     * @param account the account linked to the role
+     * @return the new {@link Role}
+     */
     Role createRole(String name, Account account);
 }

@@ -27,6 +27,9 @@ import org.seedstack.seed.crypto.api.hash.HashingSupport;
 import org.seedstack.seed.persistence.jpa.api.JpaUnit;
 import org.seedstack.seed.transaction.api.Transactional;
 
+/**
+ * Default implementation
+ */
 @Transactional
 @JpaUnit("seed-account-management-domain")
 public class AccountManagementServiceDefault implements AccountManagementService {

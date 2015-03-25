@@ -16,16 +16,44 @@ import java.util.Set;
 
 import org.seedstack.business.api.application.annotations.ApplicationService;
 
+/**
+ * Service to manage accounts. ALlows to create new accounts with their roles.
+ */
 @ApplicationService
 public interface AccountManagementService {
 
+	/**
+	 * Creates a new account. The given password will be hashed.
+	 * @param id id of the account
+	 * @param password the clear password. WILL BE HASHED
+	 */
     void createAccount(String id, String password);
 
+    /**
+     * Returns the roles
+     * @param id id of the account
+     * @return a Set of string representing the roles
+     */
     Set<String> getRoles(String id);
 
+    /**
+     * Adds a role for an account
+     * @param id id of the account
+     * @param role the role to add.
+     */
     void addRole(String id, String role);
 
+    /**
+     * Removes a role from the account
+     * @param id id of the account
+     * @param role the role to remove
+     */
     void removeRole(String id, String role);
 
+    /**
+     * Replaces all the roles of an account
+     * @param id id of the account
+     * @param roles the roles to give
+     */
     void replaceRoles(String id, Set<String> roles);
 }

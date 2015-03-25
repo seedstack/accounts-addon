@@ -14,6 +14,9 @@ package org.seedstack.accountmanagement.internal.domain.account;
 
 import org.seedstack.business.api.domain.GenericRepository;
 
+/**
+ * Repository for {@link Account}
+ */
 public interface AccountRepository extends GenericRepository<Account, String> {
 
 }
