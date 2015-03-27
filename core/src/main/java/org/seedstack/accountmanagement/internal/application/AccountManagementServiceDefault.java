@@ -55,7 +55,7 @@ public class AccountManagementServiceDefault implements AccountManagementService
         Set<String> roles = new HashSet<String>();
         Account account = accountRepository.load(id);
         for (Role role : account.getRoles()) {
-            roles.add(role.getEntityId());
+            roles.add(role.getName());
         }
         return roles;
     }
@@ -63,11 +63,7 @@ public class AccountManagementServiceDefault implements AccountManagementService
     @Override
     public void addRole(String id, String role) {
         Account account = accountRepository.load(id);
-        Set<Role> roles = account.getRoles();
-        Role newRole = accountFactory.createRole(role, account);
-        if (!roles.contains(newRole)) {
-            roles.add(newRole);
-        }
+        account.addRole(role);
         accountRepository.save(account);
     }
 
@@ -76,7 +72,7 @@ public class AccountManagementServiceDefault implements AccountManagementService
         Account account = accountRepository.load(id);
         Set<Role> roles = account.getRoles();
         for (Role currentRole : roles) {
-            if (currentRole.getEntityId().equals(role)) {
+            if (currentRole.getName().equals(role)) {
                 roles.remove(currentRole);
                 break;
             }
@@ -89,8 +85,7 @@ public class AccountManagementServiceDefault implements AccountManagementService
         Set<Role> currentRoles = account.getRoles();
         currentRoles.clear();
         for (String role : roles) {
-            Role newRole = accountFactory.createRole(role, account);
-            currentRoles.add(newRole);
+            account.addRole(role);
         }
         accountRepository.save(account);
     }
