@@ -61,7 +61,7 @@ public class DatabaseRealm implements Realm {
         Set<String> roles = new HashSet<String>();
         Account account = accountRepository.load(identityPrincipal.getPrincipal().toString());
         for (Role role : account.getRoles()) {
-            roles.add(role.getEntityId());
+            roles.add(role.getName());
         }
         return roles;
     }

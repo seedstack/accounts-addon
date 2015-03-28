@@ -34,12 +34,4 @@ public interface AccountFactory extends GenericFactory<Account> {
      * @return the new {@link Account}
      */
     Account createAccount(String accountId, String hashedPassword, String salt);
-
-    /**
-     * Creates a new {@link Role}
-     * @param name name of the role
-     * @param account the account linked to the role
-     * @return the new {@link Role}
-     */
-    Role createRole(String name, Account account);
 }

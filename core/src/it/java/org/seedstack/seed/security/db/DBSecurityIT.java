@@ -64,8 +64,7 @@ public class DBSecurityIT {
         if (!alreadyInited) {
             Account account = accountFactory.createAccount(ID, "5BCBD689FA503E51D3DC7A1D711EE8D851F6A70F46A83FCF",
                     "2C80E0E3779909FA6335B25EC1D4470316630D210754317E");
-            Role role = accountFactory.createRole("SEED.JEDI", account);
-            account.getRoles().add(role);
+            account.addRole("SEED.JEDI");
             accountRepository.persist(account);
             alreadyInited = true;
         }

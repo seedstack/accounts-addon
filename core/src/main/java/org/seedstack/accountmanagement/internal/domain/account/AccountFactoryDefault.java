@@ -31,9 +31,4 @@ public class AccountFactoryDefault extends BaseFactory<Account> implements Accou
         a.setSalt(salt);
         return a;
     }
-
-    @Override
-    public Role createRole(String name, Account account) {
-        return new Role(name, account);
-    }
 }

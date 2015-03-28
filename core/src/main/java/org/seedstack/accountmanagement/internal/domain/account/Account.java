@@ -16,14 +16,13 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.seedstack.business.api.domain.base.BaseAggregateRoot;
-import org.seedstack.business.jpa.domain.BaseJpaAggregateRoot;
 
 /**
  * An account is merely an id, a hashed password and the salt used to hash the password.
@@ -41,7 +40,8 @@ public class Account extends BaseAggregateRoot<String> implements Serializable {
 
     private String salt;
 
-    @OneToMany(mappedBy = "account", cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE }, orphanRemoval = true)
+    @ElementCollection
+    @CollectionTable(name="SEED_ACCOUNT_ROLES")
     private Set<Role> roles;
 
     protected Account() {
@@ -95,5 +95,13 @@ public class Account extends BaseAggregateRoot<String> implements Serializable {
      */
     public Set<Role> getRoles() {
         return roles;
+    }
+    
+    /**
+     * Adds a new role
+     * @param role name of the role
+     */
+    public void addRole(String role){
+    	roles.add(new Role(role));
     }
 }
