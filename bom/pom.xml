@@ -32,8 +32,8 @@
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.seedstack.functions.i18n</groupId>
-				<artifactId>i18n-function-doc</artifactId>
+				<groupId>org.seedstack.functions.account-management</groupId>
+				<artifactId>account-management-function-doc</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
