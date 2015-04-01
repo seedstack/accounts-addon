@@ -1,4 +1,4 @@
-# SeedStack Account Management Function [![Build status](https://travis-ci.org/seedstack/account-management-function.svg?branch=master)](https://travis-ci.org/seedstack/account-management-function)
+# SeedStack Account Management Function [![Build status](https://travis-ci.org/seedstack/account-management-function.svg?branch=master)](https://travis-ci.org/seedstack/account-management-function) [![Stories in Ready](https://badge.waffle.io/seedstack/account-management-function.png?label=ready&title=Ready)](https://waffle.io/seedstack/account-management-function)
 
 This function enables to manage user accounts in local persistence. 
 
