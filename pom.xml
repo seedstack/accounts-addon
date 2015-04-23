@@ -15,17 +15,17 @@
     <parent>
         <groupId>org.seedstack</groupId>
         <artifactId>parent</artifactId>
-        <version>2.0.0-M1</version>
+        <version>2.0.0-M2-SNAPSHOT</version>
     </parent>
 
     <groupId>org.seedstack.functions.account-management</groupId>
     <artifactId>account-management-function</artifactId>
-    <version>1.0.0-M1-SNAPSHOT</version>
+    <version>1.0.0-M2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
-        <seed.version>2.0.0-M1-SNAPSHOT</seed.version>
-        <business.version>2.0.0-M1-SNAPSHOT</business.version>
+        <seed.version>2.0.0-M2-SNAPSHOT</seed.version>
+        <business.version>2.0.0-M2-SNAPSHOT</business.version>
     </properties>
 
     <modules>
