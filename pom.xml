@@ -83,6 +83,13 @@
         </dependency>
     </dependencies>
 
+    <scm>
+        <url>https://github.com/seedstack/account-management-function</url>
+        <connection>scm:git:git://github.com/seedstack/account-management-function.git</connection>
+        <developerConnection>scm:git:git@github.com:seedstack/account-management-function.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
     <repositories>
         <repository>
             <id>sonatype-nexus-staging</id>
