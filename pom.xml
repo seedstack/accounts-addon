@@ -113,7 +113,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>5.0.1.final</version>
+            <version>5.0.2.Final</version>
             <scope>test</scope>
         </dependency>
         <dependency>
