@@ -8,13 +8,13 @@
 /*
  * Creation : 6 mars 2015
  */
-package org.seedstack.accountmanagement.internal.application;
+package org.seedstack.accounts.internal.application;
 
-import org.seedstack.accountmanagement.api.AccountManagementService;
-import org.seedstack.accountmanagement.internal.domain.account.Account;
-import org.seedstack.accountmanagement.internal.domain.account.AccountFactory;
-import org.seedstack.accountmanagement.internal.domain.account.AccountRepository;
-import org.seedstack.accountmanagement.internal.domain.account.Role;
+import org.seedstack.accounts.AccountManagementService;
+import org.seedstack.accounts.internal.domain.account.Account;
+import org.seedstack.accounts.internal.domain.account.AccountFactory;
+import org.seedstack.accounts.internal.domain.account.AccountRepository;
+import org.seedstack.accounts.internal.domain.account.Role;
 import org.seedstack.seed.crypto.api.Hash;
 import org.seedstack.seed.crypto.api.HashingService;
 import org.seedstack.seed.persistence.jpa.api.JpaUnit;
@@ -28,7 +28,7 @@ import java.util.Set;
  * Default implementation
  */
 @Transactional
-@JpaUnit("seed-account-management-domain")
+@JpaUnit("accounts-domain")
 public class AccountManagementServiceDefault implements AccountManagementService {
 
     @Inject

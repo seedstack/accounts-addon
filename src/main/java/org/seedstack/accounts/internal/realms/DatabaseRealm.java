@@ -8,11 +8,11 @@
 /*
  * Creation : 26 févr. 2015
  */
-package org.seedstack.accountmanagement.internal.realms;
+package org.seedstack.accounts.internal.realms;
 
-import org.seedstack.accountmanagement.internal.domain.account.Account;
-import org.seedstack.accountmanagement.internal.domain.account.AccountRepository;
-import org.seedstack.accountmanagement.internal.domain.account.Role;
+import org.seedstack.accounts.internal.domain.account.Account;
+import org.seedstack.accounts.internal.domain.account.AccountRepository;
+import org.seedstack.accounts.internal.domain.account.Role;
 import org.seedstack.seed.crypto.api.Hash;
 import org.seedstack.seed.crypto.api.HashingService;
 import org.seedstack.seed.persistence.jpa.api.JpaUnit;
@@ -52,7 +52,7 @@ public class DatabaseRealm implements Realm {
 
     @Override
     @Transactional
-    @JpaUnit("seed-account-management-domain")
+    @JpaUnit("accounts-domain")
     public Set<String> getRealmRoles(PrincipalProvider<?> identityPrincipal, Collection<PrincipalProvider<?>> otherPrincipals) {
         Set<String> roles = new HashSet<String>();
         Account account = accountRepository.load(identityPrincipal.getPrincipal().toString());
@@ -64,7 +64,7 @@ public class DatabaseRealm implements Realm {
 
     @Override
     @Transactional
-    @JpaUnit("seed-account-management-domain")
+    @JpaUnit("accounts-domain")
     public AuthenticationInfo getAuthenticationInfo(AuthenticationToken authToken) throws AuthenticationException {
         if (!(authToken instanceof UsernamePasswordToken)) {
             throw new UnsupportedTokenException();

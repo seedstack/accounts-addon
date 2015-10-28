@@ -8,7 +8,7 @@
 /*
  * Creation : 6 mars 2015
  */
-package org.seedstack.accountmanagement.api;
+package org.seedstack.accounts;
 
 import org.seedstack.business.api.Service;
 

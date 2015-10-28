@@ -8,12 +8,12 @@
 /*
  * Creation : 6 mars 2015
  */
-package org.seedstack.accountmanagement.internal.application;
+package org.seedstack.accounts.internal.application;
 
-import org.seedstack.accountmanagement.api.IncorrectPasswordException;
-import org.seedstack.accountmanagement.api.PasswordChangeService;
-import org.seedstack.accountmanagement.internal.domain.account.Account;
-import org.seedstack.accountmanagement.internal.domain.account.AccountRepository;
+import org.seedstack.accounts.IncorrectPasswordException;
+import org.seedstack.accounts.PasswordChangeService;
+import org.seedstack.accounts.internal.domain.account.Account;
+import org.seedstack.accounts.internal.domain.account.AccountRepository;
 import org.seedstack.seed.crypto.api.Hash;
 import org.seedstack.seed.crypto.api.HashingService;
 import org.seedstack.seed.persistence.jpa.api.JpaUnit;
@@ -38,7 +38,7 @@ public class PasswordChangeServiceDefault implements PasswordChangeService {
 
     @Override
     @Transactional
-    @JpaUnit("seed-account-management-domain")
+    @JpaUnit("accounts-domain")
     public void changePassword(String currentPassword, String newPassword) throws IncorrectPasswordException {
         if (!securitySupport.isAuthenticated()) {
             throw new IllegalStateException("Only connected user can change his password");

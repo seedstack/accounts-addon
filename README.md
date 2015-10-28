@@ -1,8 +1,10 @@
-# SeedStack Account Management Function 
+# SeedStack accounts add-on 
 
-[![Build status](https://travis-ci.org/seedstack/account-management-function.svg?branch=master)](https://travis-ci.org/seedstack/account-management-function) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.seedstack.functions.account-management/account-management-function/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/org.seedstack.functions.account-management/account-management-function)
+[![Build status](https://travis-ci.org/seedstack/accounts-addon.svg?branch=master)](https://travis-ci.org/seedstack/accounts-addon) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.seedstack.addons.account/account/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/org.seedstack.addons.account/accounts)
 
-This function enables to manage user accounts in local persistence. 
+This official add-on allows manage user accounts in local persistence.
+
+Note that is a work in progress.
 
 # Copyright and license
 

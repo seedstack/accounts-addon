@@ -8,11 +8,8 @@
 
 [org.seedstack.seed]
 core.data-initialization = none
-persistence.jpa.units = seed-account-management-domain
+persistence.jpa.units = accounts-domain
 persistence.jdbc.datasources = datasource1
-
-transaction.manager = org.seedstack.seed.transaction.internal.LocalTransactionManager
-transaction.default-handler = org.seedstack.seed.persistence.jpa.internal.JpaTransactionHandler
 
 [org.seedstack.seed.persistence.jdbc.datasource.datasource1]
 driver=org.hsqldb.jdbcDriver
@@ -20,7 +17,7 @@ url=jdbc:hsqldb:mem:testdb1
 user=sa
 password=
 
-[org.seedstack.seed.persistence.jpa.unit.seed-account-management-domain.property]
+[org.seedstack.seed.persistence.jpa.unit.accounts-domain.property]
 javax.persistence.jdbc.driver=org.hsqldb.jdbcDriver
 javax.persistence.jdbc.url=jdbc:hsqldb:mem:testdb
 javax.persistence.jdbc.user=sa

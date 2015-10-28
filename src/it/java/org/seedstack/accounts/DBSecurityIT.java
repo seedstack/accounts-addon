@@ -6,10 +6,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 /*
- * Creation : 9 mars 2015
+ * Creation : 27 févr. 2015
  */
-package org.seedstack.seed.security.db;
+package org.seedstack.accounts;
 
+import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.subject.Subject;
@@ -17,32 +18,30 @@ import org.apache.shiro.util.ThreadContext;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.seedstack.accountmanagement.api.AccountManagementService;
+import org.seedstack.accounts.internal.domain.account.Account;
+import org.seedstack.accounts.internal.domain.account.AccountFactory;
+import org.seedstack.accounts.internal.domain.account.AccountRepository;
 import org.seedstack.seed.it.SeedITRunner;
 import org.seedstack.seed.persistence.jpa.api.JpaUnit;
 import org.seedstack.seed.security.api.SecuritySupport;
 import org.seedstack.seed.transaction.api.Transactional;
 
 import javax.inject.Inject;
-import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SeedITRunner.class)
-public class AccountManagementServiceIT {
+public class DBSecurityIT {
 
     private static final String ID = "Obiwan";
 
-    private static final String ID2 = "Anakin";
-
-    private static final String PASSWORD = "Y0daRul3z";
-
-    private static final String PASSWORD2 = "Im50D4rk";
-
-    private static final String ROLE = "SEED.JEDI";
+    private static final String PASSWORD = "Y0daRuleZ";
 
     @Inject
-    private AccountManagementService accountManagementService;
+    private AccountFactory accountFactory;
+
+    @Inject
+    private AccountRepository accountRepository;
 
     @Inject
     private SecuritySupport securitySupport;
@@ -52,39 +51,39 @@ public class AccountManagementServiceIT {
 
     private static boolean alreadyInited;
 
-    @Before
     @Transactional
-    @JpaUnit("seed-account-management-domain")
+    @JpaUnit("accounts-domain")
+    @Before
     public void initBase() throws Exception {
+        ThreadContext.bind(securityManager);
         if (!alreadyInited) {
-            accountManagementService.createAccount(ID, PASSWORD);
-            accountManagementService.addRole(ID, ROLE);
-            accountManagementService.createAccount(ID2, PASSWORD2);
-            accountManagementService.addRole(ID2, ROLE);
+            Account account = accountFactory.createAccount(ID, "5BCBD689FA503E51D3DC7A1D711EE8D851F6A70F46A83FCF",
+                    "2C80E0E3779909FA6335B25EC1D4470316630D210754317E");
+            account.addRole("SEED.JEDI");
+            accountRepository.persist(account);
             alreadyInited = true;
         }
     }
 
     @Test
-    public void accountHasBeenCreatedWithRoles() {
-        Set<String> roles = accountManagementService.getRoles(ID);
-        assertThat(roles).containsExactly(ROLE);
-        Set<String> roles2 = accountManagementService.getRoles(ID2);
-        assertThat(roles2).containsExactly(ROLE);
-    }
-
-    @Test
-    public void userCanConnectWithHisPassword() {
+    public void goodCredentials() {
         connectUser(ID, PASSWORD);
         assertThat(securitySupport.isAuthenticated()).isTrue();
+        assertThat(securitySupport.hasRole("jedi")).isTrue();
+        securitySupport.logout();
+    }
+
+    @Test(expected = AuthenticationException.class)
+    public void wrongPassword() {
+        connectUser(ID, "S0mePa55");
         securitySupport.logout();
     }
 
     private void connectUser(String id, String password) {
-        ThreadContext.bind(securityManager);
-        Subject subject = new Subject.Builder(securityManager).buildSubject();
+        Subject subject = new Subject.Builder().buildSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(id, password);
         subject.login(token);
         ThreadContext.bind(subject);
     }
+
 }

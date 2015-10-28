@@ -12,8 +12,8 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	version="2.0">
 
-	<persistence-unit name="seed-account-management-domain" transaction-type="RESOURCE_LOCAL">
-        <class>org.seedstack.accountmanagement.internal.domain.account.Account</class>
-        <class>org.seedstack.accountmanagement.internal.domain.account.Role</class>
+	<persistence-unit name="accounts-domain" transaction-type="RESOURCE_LOCAL">
+        <class>org.seedstack.accounts.internal.domain.account.Account</class>
+        <class>org.seedstack.accounts.internal.domain.account.Role</class>
 	</persistence-unit>
 </persistence>

@@ -16,8 +16,8 @@
         <version>2.1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.seedstack.addons.account-management</groupId>
-    <artifactId>account-management</artifactId>
+    <groupId>org.seedstack.addons.accounts</groupId>
+    <artifactId>accounts</artifactId>
     <version>1.0.0-M1-SNAPSHOT</version>
 
     <properties>
@@ -85,7 +85,7 @@
             <version>${business.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.seedstack.addons</groupId>
+            <groupId>org.seedstack.addons.jpa</groupId>
             <artifactId>jpa</artifactId>
             <version>${jpa.addon.version}</version>
         </dependency>
@@ -135,9 +135,9 @@
     </dependencies>
 
     <scm>
-        <url>https://github.com/seedstack/account-management-addon</url>
-        <connection>scm:git:git://github.com/seedstack/account-management-addon.git</connection>
-        <developerConnection>scm:git:git@github.com:seedstack/account-management-addon.git</developerConnection>
+        <url>https://github.com/seedstack/accounts-addon</url>
+        <connection>scm:git:git://github.com/seedstack/accounts-addon.git</connection>
+        <developerConnection>scm:git:git@github.com:seedstack/accounts-addon.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
