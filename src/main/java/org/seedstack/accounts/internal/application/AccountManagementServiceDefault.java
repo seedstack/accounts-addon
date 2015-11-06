@@ -15,10 +15,10 @@ import org.seedstack.accounts.internal.domain.account.Account;
 import org.seedstack.accounts.internal.domain.account.AccountFactory;
 import org.seedstack.accounts.internal.domain.account.AccountRepository;
 import org.seedstack.accounts.internal.domain.account.Role;
-import org.seedstack.seed.crypto.api.Hash;
-import org.seedstack.seed.crypto.api.HashingService;
-import org.seedstack.seed.persistence.jpa.api.JpaUnit;
-import org.seedstack.seed.transaction.api.Transactional;
+import org.seedstack.seed.crypto.Hash;
+import org.seedstack.seed.crypto.HashingService;
+import org.seedstack.jpa.JpaUnit;
+import org.seedstack.seed.transaction.Transactional;
 
 import javax.inject.Inject;
 import java.util.HashSet;

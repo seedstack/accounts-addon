@@ -14,11 +14,11 @@ import org.seedstack.accounts.IncorrectPasswordException;
 import org.seedstack.accounts.PasswordChangeService;
 import org.seedstack.accounts.internal.domain.account.Account;
 import org.seedstack.accounts.internal.domain.account.AccountRepository;
-import org.seedstack.seed.crypto.api.Hash;
-import org.seedstack.seed.crypto.api.HashingService;
-import org.seedstack.seed.persistence.jpa.api.JpaUnit;
-import org.seedstack.seed.security.api.SecuritySupport;
-import org.seedstack.seed.transaction.api.Transactional;
+import org.seedstack.seed.crypto.Hash;
+import org.seedstack.seed.crypto.HashingService;
+import org.seedstack.jpa.JpaUnit;
+import org.seedstack.seed.security.SecuritySupport;
+import org.seedstack.seed.transaction.Transactional;
 
 import javax.inject.Inject;
 

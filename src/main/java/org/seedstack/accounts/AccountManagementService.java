@@ -10,12 +10,12 @@
  */
 package org.seedstack.accounts;
 
-import org.seedstack.business.api.Service;
+import org.seedstack.business.Service;
 
 import java.util.Set;
 
 /**
- * Service to manage accounts. ALlows to create new accounts with their roles.
+ * Service to manage accounts. Allows to create new accounts with their roles.
  */
 @Service
 public interface AccountManagementService {

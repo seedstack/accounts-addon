@@ -10,15 +10,15 @@
  */
 package org.seedstack.accounts.internal.domain.account;
 
-import org.seedstack.business.api.domain.GenericFactory;
+import org.seedstack.business.domain.GenericFactory;
 
 /**
- * Factory used to create a new {@link Account}
+ * Factory used to create a new {@link Account}.
  */
 public interface AccountFactory extends GenericFactory<Account> {
 
     /**
-     * Creates a new {@link Account} with its id
+     * Creates a new {@link Account} with its id.
      *
      * @param accountId the id
      * @return a new {@link Account}
@@ -26,7 +26,7 @@ public interface AccountFactory extends GenericFactory<Account> {
     Account createAccount(String accountId);
 
     /**
-     * Creates a new {@link Account} with id, hashed password and salt
+     * Creates a new {@link Account} with id, hashed password and salt.
      *
      * @param accountId      id
      * @param hashedPassword the hashed password

@@ -12,7 +12,7 @@ package org.seedstack.accounts.internal.infrastructure.persistence.jpa;
 
 import org.seedstack.accounts.internal.domain.account.Account;
 import org.seedstack.accounts.internal.domain.account.AccountRepository;
-import org.seedstack.business.jpa.BaseJpaRepository;
+import org.seedstack.jpa.BaseJpaRepository;
 
 /**
  * Jpa implementation of AccountRepository

@@ -10,7 +10,7 @@
  */
 package org.seedstack.accounts.internal.domain.account;
 
-import org.seedstack.business.api.domain.BaseAggregateRoot;
+import org.seedstack.business.domain.BaseAggregateRoot;
 
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
@@ -56,7 +56,7 @@ public class Account extends BaseAggregateRoot<String> implements Serializable {
     }
 
     /**
-     * Returns the hashed password
+     * Returns the hashed password.
      *
      * @return a String being the hashed password
      */
@@ -65,7 +65,7 @@ public class Account extends BaseAggregateRoot<String> implements Serializable {
     }
 
     /**
-     * Returns the salt used to hash the password
+     * Returns the salt used to hash the password.
      *
      * @return A String being the salt
      */
@@ -74,7 +74,7 @@ public class Account extends BaseAggregateRoot<String> implements Serializable {
     }
 
     /**
-     * Sets the hashed password
+     * Sets the hashed password.
      *
      * @param hashedPassword a String being the hashed password
      */
@@ -83,7 +83,7 @@ public class Account extends BaseAggregateRoot<String> implements Serializable {
     }
 
     /**
-     * Sets the salt
+     * Sets the salt.
      *
      * @param salt a String being the salt
      */
@@ -92,7 +92,7 @@ public class Account extends BaseAggregateRoot<String> implements Serializable {
     }
 
     /**
-     * Returns the roles of this account
+     * Returns the roles of this account.
      *
      * @return a Set of String, each String being a role. Empty list if none.
      */
@@ -101,7 +101,7 @@ public class Account extends BaseAggregateRoot<String> implements Serializable {
     }
 
     /**
-     * Adds a new role
+     * Adds a new role.
      *
      * @param role name of the role
      */
