@@ -18,28 +18,35 @@ public class IncorrectPasswordException extends Exception {
     private static final long serialVersionUID = -2651046105421381539L;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public IncorrectPasswordException() {
         super();
     }
 
     /**
-     * Constructor
+     * Constructor.
+     *
+     * @param message the exception message
+     * @param cause   the exception cause
      */
     public IncorrectPasswordException(String message, Throwable cause) {
         super(message, cause);
     }
 
     /**
-     * Constructor
+     * Constructor.
+     *
+     * @param message the exception message
      */
     public IncorrectPasswordException(String message) {
         super(message);
     }
 
     /**
-     * Constructor
+     * Constructor.
+     *
+     * @param cause the exception cause
      */
     public IncorrectPasswordException(Throwable cause) {
         super(cause);

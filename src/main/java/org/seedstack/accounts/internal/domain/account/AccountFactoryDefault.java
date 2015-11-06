@@ -11,10 +11,10 @@
 package org.seedstack.accounts.internal.domain.account;
 
 
-import org.seedstack.business.api.domain.BaseFactory;
+import org.seedstack.business.domain.BaseFactory;
 
 /**
- * Default AccountFactory
+ * Default AccountFactory.
  */
 public class AccountFactoryDefault extends BaseFactory<Account> implements AccountFactory {
 

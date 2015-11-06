@@ -22,9 +22,9 @@ import org.seedstack.accounts.internal.domain.account.Account;
 import org.seedstack.accounts.internal.domain.account.AccountFactory;
 import org.seedstack.accounts.internal.domain.account.AccountRepository;
 import org.seedstack.seed.it.SeedITRunner;
-import org.seedstack.seed.persistence.jpa.api.JpaUnit;
-import org.seedstack.seed.security.api.SecuritySupport;
-import org.seedstack.seed.transaction.api.Transactional;
+import org.seedstack.jpa.JpaUnit;
+import org.seedstack.seed.security.SecuritySupport;
+import org.seedstack.seed.transaction.Transactional;
 
 import javax.inject.Inject;
 
@@ -49,19 +49,19 @@ public class DBSecurityIT {
     @Inject
     private SecurityManager securityManager;
 
-    private static boolean alreadyInited;
+    private static boolean initialized;
 
     @Transactional
     @JpaUnit("accounts-domain")
     @Before
     public void initBase() throws Exception {
         ThreadContext.bind(securityManager);
-        if (!alreadyInited) {
+        if (!initialized) {
             Account account = accountFactory.createAccount(ID, "5BCBD689FA503E51D3DC7A1D711EE8D851F6A70F46A83FCF",
                     "2C80E0E3779909FA6335B25EC1D4470316630D210754317E");
             account.addRole("SEED.JEDI");
             accountRepository.persist(account);
-            alreadyInited = true;
+            initialized = true;
         }
     }
 

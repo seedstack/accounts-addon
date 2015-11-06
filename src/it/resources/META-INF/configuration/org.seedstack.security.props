@@ -8,16 +8,18 @@
 
 [org.seedstack.seed]
 core.data-initialization = none
-persistence.jpa.units = accounts-domain
-persistence.jdbc.datasources = datasource1
 
-[org.seedstack.seed.persistence.jdbc.datasource.datasource1]
+[org.seedstack]
+jpa.units = accounts-domain
+jdbc.datasources = datasource1
+
+[org.seedstack.jdbc.datasource.datasource1]
 driver=org.hsqldb.jdbcDriver
 url=jdbc:hsqldb:mem:testdb1
 user=sa
 password=
 
-[org.seedstack.seed.persistence.jpa.unit.accounts-domain.property]
+[org.seedstack.jpa.unit.accounts-domain.property]
 javax.persistence.jdbc.driver=org.hsqldb.jdbcDriver
 javax.persistence.jdbc.url=jdbc:hsqldb:mem:testdb
 javax.persistence.jdbc.user=sa

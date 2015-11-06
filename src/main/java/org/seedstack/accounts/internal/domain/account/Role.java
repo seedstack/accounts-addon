@@ -11,14 +11,14 @@
 package org.seedstack.accounts.internal.domain.account;
 
 
-import org.seedstack.business.api.domain.BaseValueObject;
+import org.seedstack.business.domain.BaseValueObject;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
- * A Role is only a String representing its name
+ * A Role is only a String representing its name.
  */
 @Embeddable
 @Table(name = "SEED_ROLES")

@@ -10,7 +10,7 @@
  */
 package org.seedstack.accounts;
 
-import org.seedstack.business.api.Service;
+import org.seedstack.business.Service;
 
 /**
  * Service that allows the connected user to change his current password.
