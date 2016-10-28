@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013-2015, The SeedStack authors <http://seedstack.org>
+ * Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -20,10 +20,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.seedstack.accounts.internal.domain.account.Account;
 import org.seedstack.accounts.internal.domain.account.AccountFactory;
-import org.seedstack.accounts.internal.domain.account.AccountRepository;
+import org.seedstack.business.domain.Repository;
+import org.seedstack.jpa.Jpa;
 import org.seedstack.seed.it.SeedITRunner;
 import org.seedstack.jpa.JpaUnit;
 import org.seedstack.seed.security.SecuritySupport;
+import org.seedstack.seed.security.WithUser;
 import org.seedstack.seed.transaction.Transactional;
 
 import javax.inject.Inject;
@@ -41,7 +43,8 @@ public class DBSecurityIT {
     private AccountFactory accountFactory;
 
     @Inject
-    private AccountRepository accountRepository;
+    @Jpa
+    private Repository<Account, String> accountRepository;
 
     @Inject
     private SecuritySupport securitySupport;
@@ -52,7 +55,7 @@ public class DBSecurityIT {
     private static boolean initialized;
 
     @Transactional
-    @JpaUnit("accounts-domain")
+    @JpaUnit("account-jpa-unit")
     @Before
     public void initBase() throws Exception {
         ThreadContext.bind(securityManager);
@@ -66,8 +69,8 @@ public class DBSecurityIT {
     }
 
     @Test
+    @WithUser(id = ID, password = PASSWORD)
     public void goodCredentials() {
-        connectUser(ID, PASSWORD);
         assertThat(securitySupport.isAuthenticated()).isTrue();
         assertThat(securitySupport.hasRole("jedi")).isTrue();
         securitySupport.logout();

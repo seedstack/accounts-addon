@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013-2015, The SeedStack authors <http://seedstack.org>
+ * Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -53,7 +53,7 @@ public class AccountManagementServiceIT {
 
     @Before
     @Transactional
-    @JpaUnit("accounts-domain")
+    @JpaUnit("account-jpa-unit")
     public void initBase() throws Exception {
         if (!alreadyInited) {
             accountManagementService.createAccount(ID, PASSWORD);
@@ -74,15 +74,15 @@ public class AccountManagementServiceIT {
 
     @Test
     public void userCanConnectWithHisPassword() {
-        connectUser(ID, PASSWORD);
+        connectUser();
         assertThat(securitySupport.isAuthenticated()).isTrue();
         securitySupport.logout();
     }
 
-    private void connectUser(String id, String password) {
+    private void connectUser() {
         ThreadContext.bind(securityManager);
         Subject subject = new Subject.Builder(securityManager).buildSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(id, password);
+        UsernamePasswordToken token = new UsernamePasswordToken(AccountManagementServiceIT.ID, AccountManagementServiceIT.PASSWORD);
         subject.login(token);
         ThreadContext.bind(subject);
     }

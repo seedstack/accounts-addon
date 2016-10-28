@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013-2015, The SeedStack authors <http://seedstack.org>
+ * Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -42,7 +42,7 @@ public class Account extends BaseAggregateRoot<String> implements Serializable {
     @CollectionTable(name = "SEED_ACCOUNT_ROLES")
     private Set<Role> roles;
 
-    protected Account() {
+    Account() {
     }
 
     Account(String id) {

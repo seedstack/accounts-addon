@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013-2015, The SeedStack authors <http://seedstack.org>
+ * Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -17,16 +17,14 @@ import org.apache.shiro.util.ThreadContext;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.seedstack.seed.it.SeedITRunner;
+import org.seedstack.seed.it.AbstractSeedIT;
 import org.seedstack.seed.security.SecuritySupport;
 
 import javax.inject.Inject;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(SeedITRunner.class)
-public class PasswordChangeServiceIT {
+public class PasswordChangeServiceIT extends AbstractSeedIT{
 
     private static final String ID = "Obiwan";
 
