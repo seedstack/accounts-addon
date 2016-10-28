@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013-2015, The SeedStack authors <http://seedstack.org>
+ * Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -11,8 +11,9 @@
 package org.seedstack.accounts.internal.realms;
 
 import org.seedstack.accounts.internal.domain.account.Account;
-import org.seedstack.accounts.internal.domain.account.AccountRepository;
 import org.seedstack.accounts.internal.domain.account.Role;
+import org.seedstack.business.domain.Repository;
+import org.seedstack.jpa.Jpa;
 import org.seedstack.seed.crypto.Hash;
 import org.seedstack.seed.crypto.HashingService;
 import org.seedstack.jpa.JpaUnit;
@@ -32,30 +33,35 @@ import org.seedstack.seed.transaction.Transactional;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * A Realm to authentify user upon the Accounts persisted by the repository
  */
-public class DatabaseRealm implements Realm {
+public class AccountRealm implements Realm {
 
     private RoleMapping roleMapping;
 
     private RolePermissionResolver rolePermissionResolver;
 
     @Inject
-    private AccountRepository accountRepository;
+    @Jpa
+    private Repository<Account, String> accountRepository;
 
     @Inject
     private HashingService hashingService;
 
     @Override
     @Transactional
-    @JpaUnit("accounts-domain")
+    @JpaUnit("account-jpa-unit")
     public Set<String> getRealmRoles(PrincipalProvider<?> identityPrincipal, Collection<PrincipalProvider<?>> otherPrincipals) {
         Set<String> roles = new HashSet<String>();
         Account account = accountRepository.load(identityPrincipal.getPrincipal().toString());
+        if(account == null){
+            return Collections.emptySet();
+        }
         for (Role role : account.getRoles()) {
             roles.add(role.getName());
         }
@@ -64,7 +70,7 @@ public class DatabaseRealm implements Realm {
 
     @Override
     @Transactional
-    @JpaUnit("accounts-domain")
+    @JpaUnit("account-jpa-unit")
     public AuthenticationInfo getAuthenticationInfo(AuthenticationToken authToken) throws AuthenticationException {
         if (!(authToken instanceof UsernamePasswordToken)) {
             throw new UnsupportedTokenException();
@@ -98,7 +104,7 @@ public class DatabaseRealm implements Realm {
      * @param roleMapping the role mapping
      */
     @Inject
-    public void setRoleMapping(@Named("DatabaseRealm-role-mapping") RoleMapping roleMapping) {
+    public void setRoleMapping(@Named("AccountRealm-role-mapping") RoleMapping roleMapping) {
         this.roleMapping = roleMapping;
     }
 
@@ -108,7 +114,7 @@ public class DatabaseRealm implements Realm {
      * @param rolePermissionResolver the rolePermissionResolver
      */
     @Inject
-    public void setRolePermissionResolver(@Named("DatabaseRealm-role-permission-resolver") RolePermissionResolver rolePermissionResolver) {
+    public void setRolePermissionResolver(@Named("AccountRealm-role-permission-resolver") RolePermissionResolver rolePermissionResolver) {
         this.rolePermissionResolver = rolePermissionResolver;
     }
 

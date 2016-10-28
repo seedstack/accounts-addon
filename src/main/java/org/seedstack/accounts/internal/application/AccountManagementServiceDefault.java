@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013-2015, The SeedStack authors <http://seedstack.org>
+ * Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -13,8 +13,9 @@ package org.seedstack.accounts.internal.application;
 import org.seedstack.accounts.AccountManagementService;
 import org.seedstack.accounts.internal.domain.account.Account;
 import org.seedstack.accounts.internal.domain.account.AccountFactory;
-import org.seedstack.accounts.internal.domain.account.AccountRepository;
 import org.seedstack.accounts.internal.domain.account.Role;
+import org.seedstack.business.domain.Repository;
+import org.seedstack.jpa.Jpa;
 import org.seedstack.seed.crypto.Hash;
 import org.seedstack.seed.crypto.HashingService;
 import org.seedstack.jpa.JpaUnit;
@@ -28,7 +29,7 @@ import java.util.Set;
  * Default implementation
  */
 @Transactional
-@JpaUnit("accounts-domain")
+@JpaUnit("account-jpa-unit")
 public class AccountManagementServiceDefault implements AccountManagementService {
 
     @Inject
@@ -38,7 +39,8 @@ public class AccountManagementServiceDefault implements AccountManagementService
     private AccountFactory accountFactory;
 
     @Inject
-    private AccountRepository accountRepository;
+    @Jpa
+    private Repository<Account, String> accountRepository;
 
     @Override
     public void createAccount(String id, String password) {
