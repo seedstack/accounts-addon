@@ -1,17 +1,15 @@
 #
-# Copyright (c) 2013-2015, The SeedStack authors <http://seedstack.org>
+# Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
 #
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 
-[org.seedstack.seed]
-core.data-initialization = none
-
 [org.seedstack]
-jpa.units = accounts-domain
-jdbc.datasources = datasource1
+jpa.units=accounts-unit
+jdbc.datasources=datasource1
+seed.transaction.default-handler=org.seedstack.jpa.internal.JpaTransactionHandler
 
 [org.seedstack.jdbc.datasource.datasource1]
 driver=org.hsqldb.jdbcDriver
@@ -19,23 +17,21 @@ url=jdbc:hsqldb:mem:testdb1
 user=sa
 password=
 
-[org.seedstack.jpa.unit.accounts-domain.property]
-javax.persistence.jdbc.driver=org.hsqldb.jdbcDriver
-javax.persistence.jdbc.url=jdbc:hsqldb:mem:testdb
-javax.persistence.jdbc.user=sa
-javax.persistence.jdbc.password=
-hibernate.dialect=org.hibernate.dialect.HSQLDialect
-hibernate.hbm2ddl.auto=create
-sql.enforce_strict_size=true
+[org.seedstack.jpa.unit.accounts-unit]
+datasource=datasource1
+mapping-files=META-INF/base-user-orm.xml
+property.hibernate.dialect=org.hibernate.dialect.HSQLDialect
+property.hibernate.hbm2ddl.auto=create
+property.sql.enforce_strict_size=true
 
 [org.seedstack.seed.security]
-realms = DatabaseRealm
-db.datasource = datasource1
+realms=UserRealm
 
 [org.seedstack.seed.security.roles]
-jedi = SEED.JEDI
+admin=ADMIN
 
 [org.seedstack.seed.security.permissions]
-jedi = lightSaber:*, academy:*
-padawan = academy:learn
-ghost = site:haunt
+admin=management:items:delete
+
+[org.seedstack.accounts.*]
+default-repository=org.seedstack.jpa.Jpa

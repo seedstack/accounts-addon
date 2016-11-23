@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+
+    Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
+
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+-->
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" version="2.1">
+    <package>org.seedstack.accounts</package>
+    <entity class="BaseUser" name="User" access="FIELD">
+        <attributes>
+            <id name="id"/>
+            <element-collection name="roles"/>
+        </attributes>
+    </entity>
+</entity-mappings>
